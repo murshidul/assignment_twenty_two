@@ -27,7 +27,7 @@ class HomeController extends GetxController {
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
 
-        for (int i = 0; i < data.lenth; i++) {
+        for (int i = 0; i < data.length; i++) {
           products.add(ProductModel.fromJson(data[i]));
         }
         isLoading = false;
