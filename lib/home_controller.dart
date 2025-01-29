@@ -11,15 +11,18 @@ class HomeController extends GetxController {
   late HomeService homeService;
 
   List<ProductModel> products = [];
+  List<String> categories = [];
+
+  bool isCategoryLoading = false;
   bool isLoading = false;
   @override
   void onInit() {
     homeService = HomeService();
-    getCategories();
+    getProducts();
     super.onInit();
   }
 
-  void getCategories() async {
+  void getProducts() async {
     try {
       isLoading = true;
       update();
@@ -35,6 +38,31 @@ class HomeController extends GetxController {
         print(products);
       }
     } catch (e) {
+      print(e);
+    }
+  }
+
+  void getCategories() async {
+    try {
+      isCategoryLoading = true;
+      update();
+      http.Response response = await homeService.getCategories();
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body);
+
+        for (int i = 0; i < data.length; i++) {
+          categories.add(data[i]);
+          isCategoryLoading = false;
+          update();
+        }
+      } else {
+        print("Somethin Wroing");
+        isCategoryLoading = false;
+        update();
+      }
+    } catch (e) {
+      isCategoryLoading = false;
+      update();
       print(e);
     }
   }

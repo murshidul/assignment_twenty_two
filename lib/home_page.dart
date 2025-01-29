@@ -63,7 +63,7 @@ class HomePage extends StatelessWidget {
                                     Row(
                                       children: [
                                         Text(
-                                          "Price",
+                                          "Price: ",
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold),
                                         ),

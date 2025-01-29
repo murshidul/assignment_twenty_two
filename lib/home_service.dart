@@ -8,4 +8,11 @@ class HomeService {
 
     return response;
   }
+
+  Future<http.Response> getCategories() async {
+    String url = "https://fakestoreapi.com/products/categories";
+
+    http.Response response = await http.get(Uri.parse(url));
+    return response;
+  }
 }
