@@ -15,4 +15,10 @@ class HomeService {
     http.Response response = await http.get(Uri.parse(url));
     return response;
   }
+
+  Future<http.Response> getProductsByCategory(String category) async {
+    String url = "https://fakestoreapi.com/products/category/${category}";
+    http.Response response = await http.get(Uri.parse(url));
+    return response;
+  }
 }

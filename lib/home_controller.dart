@@ -12,12 +12,17 @@ class HomeController extends GetxController {
 
   List<ProductModel> products = [];
   List<String> categories = [];
+  List<ProductModel> productsByCategory = [];
 
   bool isCategoryLoading = false;
   bool isLoading = false;
+
+  bool isProductsByCategoryLoading = false;
+
   @override
   void onInit() {
     homeService = HomeService();
+    getCategories();
     getProducts();
     super.onInit();
   }
@@ -39,6 +44,26 @@ class HomeController extends GetxController {
       }
     } catch (e) {
       print(e);
+    }
+  }
+
+  void getProductsByCategory(String category) async {
+    try {
+      isProductsByCategoryLoading = true;
+      update();
+      http.Response response =
+          await homeService.getProductsByCategory(category);
+
+      var data = jsonDecode(response.body);
+
+      for (int i = 0; i < data.length; i++) {
+        productsByCategory.add(ProductModel.fromJson(data[i]));
+      }
+      isProductsByCategoryLoading = false;
+      update();
+    } catch (e) {
+      isProductsByCategoryLoading = false;
+      update();
     }
   }
 
