@@ -8,7 +8,7 @@ class CategoriesShimmer extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.only(left: 16.0),
+        padding: const EdgeInsets.only(left: 35.0),
         child: Row(
           children: [
             Shimmer.fromColors(
