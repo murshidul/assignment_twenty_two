@@ -1,3 +1,4 @@
+import 'package:assignment_twenty_two/add_product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,7 +19,9 @@ class ActionPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(() => AddProductPage());
+                },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.deepOrangeAccent),
                 child: Text(
