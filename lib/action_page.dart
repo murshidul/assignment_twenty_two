@@ -1,4 +1,6 @@
 import 'package:assignment_twenty_two/add_product_page.dart';
+import 'package:assignment_twenty_two/delete_product_page.dart';
+import 'package:assignment_twenty_two/update_product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,7 +22,7 @@ class ActionPage extends StatelessWidget {
           children: [
             ElevatedButton(
                 onPressed: () {
-                  Get.to(() => AddProductPage());
+                  Get.to(AddProductPage());
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.deepOrangeAccent),
@@ -29,7 +31,9 @@ class ActionPage extends StatelessWidget {
                   style: TextStyle(color: Colors.white),
                 )),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(UpdateProductPage());
+                },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.deepOrangeAccent),
                 child: Text(
@@ -37,7 +41,9 @@ class ActionPage extends StatelessWidget {
                   style: TextStyle(color: Colors.white),
                 )),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(DeleteProductPage());
+                },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.deepOrangeAccent),
                 child: Text(

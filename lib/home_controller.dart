@@ -21,6 +21,10 @@ class HomeController extends GetxController {
 
   bool isProductPostLoading = false;
 
+  bool isProductUpdateLoading = false;
+
+  bool isProductDeleteLoading = false;
+
   @override
   void onInit() {
     homeService = HomeService();
@@ -37,6 +41,40 @@ class HomeController extends GetxController {
       if (response.statusCode == 200) {
         print(response.body);
         isProductPostLoading = false;
+        update();
+      } else {
+        print(response.statusCode);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  void updateProduct(Map<String, dynamic> product, String Id) async {
+    try {
+      isProductUpdateLoading = true;
+      update();
+      http.Response response = await homeService.updateProduct(product, Id);
+      if (response.statusCode == 200) {
+        print(response.body);
+        isProductUpdateLoading = false;
+        update();
+      } else {
+        print(response.statusCode);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  void deleteProduct(String Id) async {
+    try {
+      isProductDeleteLoading = true;
+      update();
+      http.Response response = await homeService.deleteProduct(Id);
+      if (response.statusCode == 200) {
+        print(response.body);
+        isProductDeleteLoading = false;
         update();
       } else {
         print(response.statusCode);

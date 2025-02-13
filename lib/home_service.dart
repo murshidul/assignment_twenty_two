@@ -31,4 +31,20 @@ class HomeService {
         await http.post(Uri.parse(url), body: json.encode(product));
     return response;
   }
+
+  Future<http.Response> updateProduct(
+      Map<String, dynamic> product, String Id) async {
+    String url = "https://fakestoreapi.com/products/${Id.toString()}";
+
+    http.Response response =
+        await http.put(Uri.parse(url), body: json.encode(product));
+    return response;
+  }
+
+  Future<http.Response> deleteProduct(String Id) async {
+    String url = "https://fakestoreapi.com/products/${Id.toString()}";
+
+    http.Response response = await http.delete(Uri.parse(url));
+    return response;
+  }
 }
